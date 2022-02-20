@@ -604,7 +604,7 @@ Raphael.fn.debug_grid = function (width) {
 
 // step the current position for drawing
 Raphael.fn.increment_offset = function (width) {
-  w = ( width === undefined ) ? this.chord_width : width;
+  var w = ( width === undefined ) ? this.chord_width : width;
   if (this.debug) this.debug_grid(w);
   this.current_offset += w;
   this.setSize( this.current_offset, this.total_height );
@@ -638,7 +638,7 @@ Raphael.fn.chord_fretboard = function ( position, chord_name ) {
 
     this.path(this.svg_params(fret_left,this.margin_top + (i * this.fret_spacing),this.string_spacing * (this.strings_drawn - 1), 0))
 
-    pos = ( fret_labels[ position + i ] === undefined ) ? '' : fret_labels[ position + i ];
+    var pos = ( fret_labels[ position + i ] === undefined ) ? '' : fret_labels[ position + i ];
 
     if ( pos.length > 0 ) { // draw fret position
       this.text(
@@ -965,7 +965,7 @@ jtab.setPalette = function (element) {
   Raphael.fn.color = fgColor;
   Raphael.fn.tab_text_color = fgColor;
 
-  bgColor = jtab.getStyle( element, 'background-color' );
+  var bgColor = jtab.getStyle( element, 'background-color' );
   if (!bgColor || (bgColor == 'transparent') || (bgColor == 'rgba(0, 0, 0, 0)')) {
     bgColor = '#fff';
   }
@@ -993,7 +993,7 @@ jtab.render = function (element,notation_text) {
   element.appendChild(canvas_holder);
 
   jtab.setPalette(element);
-  canvas = Raphael(rndID, 80, Raphael.fn.total_height );
+  var canvas = Raphael(rndID, 80, Raphael.fn.total_height );
   canvas.tab_start();
 
 
@@ -1108,7 +1108,7 @@ Raphael.fn.chord_fretboard_one_chord = function (position, chord_name) {
 
     this.path(this.svg_params(fret_left, margin_top + (i * fret_spacing), string_spacing * (strings_drawn - 1), 0))
 
-    pos = (fret_labels[position + i] === undefined) ? '' : fret_labels[position + i];
+    var pos = (fret_labels[position + i] === undefined) ? '' : fret_labels[position + i];
 
     if (pos.length > 0) { // draw fret position
       this.text(
